@@ -1,0 +1,136 @@
+[debug] > Exec(run -explain-cyclic, None, None)
+[debug] Evaluating tasks: Compile / run
+[debug] Running task... Cancel: Signal, check cycles: false, forcegc: true
+[info] compiling 6 Scala sources to C:\Users\79258\IdeaProjects\Comp-API-log-component\target\scala-3.3.4\classes ...
+[error] -- [E046] Cyclic Error: C:\Users\79258\IdeaProjects\Comp-API-log-component\src\main\scala\Parsing\FunctionExpressionParser.scala:7:40 
+[error] 7 |object FunctionExpressionParser extends RegexParsers {
+[error]   |                                        ^
+[error]   |                               Cyclic reference involving val <import>
+[error]   |
+[error]   |                                Run with -explain-cyclic for more details.
+[error]   |
+[error]   | longer explanation available when compiling with `-explain`
+[error] -- [E008] Not Found Error: C:\Users\79258\IdeaProjects\Comp-API-log-component\src\main\scala\Parsing\FunctionExpressionParser.scala:4:18 
+[error] 4 |import scala.util.parsing.combinator.RegexParsers
+[error]   |       ^^^^^^^^^^^^^^^^^^
+[error]   |value parsing is not a member of util - did you mean util.Sorting? or perhaps util.Using or util.hashing?
+[error] -- [E006] Not Found Error: C:\Users\79258\IdeaProjects\Comp-API-log-component\src\main\scala\Parsing\FunctionExpressionParser.scala:9:18 
+[error] 9 |  def expression: Parser[Expression[Int]] = reduce | map | value
+[error]   |                  ^^^^^^
+[error]   |                  Not found: type Parser
+[error]   |
+[error]   | longer explanation available when compiling with `-explain`
+[error] -- [E006] Not Found Error: C:\Users\79258\IdeaProjects\Comp-API-log-component\src\main\scala\Parsing\FunctionExpressionParser.scala:11:14 
+[error] 11 |  def reduce: Parser[ReduceExpr[Int]] = "reduce" ~> "(" ~> expression ~ ("," ~> expression) ~ ("," ~> function) <~ ")" ^^ {
+[error]    |              ^^^^^^
+[error]    |              Not found: type Parser
+[error]    |
+[error]    | longer explanation available when compiling with `-explain`
+[error] -- [E008] Not Found Error: C:\Users\79258\IdeaProjects\Comp-API-log-component\src\main\scala\Parsing\FunctionExpressionParser.scala:11:49 
+[error] 11 |  def reduce: Parser[ReduceExpr[Int]] = "reduce" ~> "(" ~> expression ~ ("," ~> expression) ~ ("," ~> function) <~ ")" ^^ {
+[error]    |                                        ^^^^^^^^^^^
+[error]    |                                      value ~> is not a member of String
+[error] -- [E006] Not Found Error: C:\Users\79258\IdeaProjects\Comp-API-log-component\src\main\scala\Parsing\FunctionExpressionParser.scala:15:11 
+[error] 15 |  def map: Parser[MapExpr[Int, Int]] = "map" ~> "(" ~> expression ~ ("," ~> function) <~ ")" ^^ {
+[error]    |           ^^^^^^
+[error]    |           Not found: type Parser
+[error]    |
+[error]    | longer explanation available when compiling with `-explain`
+[error] -- [E008] Not Found Error: C:\Users\79258\IdeaProjects\Comp-API-log-component\src\main\scala\Parsing\FunctionExpressionParser.scala:15:45 
+[error] 15 |  def map: Parser[MapExpr[Int, Int]] = "map" ~> "(" ~> expression ~ ("," ~> function) <~ ")" ^^ {
+[error]    |                                       ^^^^^^^^
+[error]    |                                      value ~> is not a member of String
+[error] -- [E006] Not Found Error: C:\Users\79258\IdeaProjects\Comp-API-log-component\src\main\scala\Parsing\FunctionExpressionParser.scala:19:13 
+[error] 19 |  def value: Parser[Value[Int]] = "[" ~> rep1sep(intLiteral, ",") <~ "]" ^^ { values =>
+[error]    |             ^^^^^^
+[error]    |             Not found: type Parser
+[error]    |
+[error]    | longer explanation available when compiling with `-explain`
+[error] -- [E008] Not Found Error: C:\Users\79258\IdeaProjects\Comp-API-log-component\src\main\scala\Parsing\FunctionExpressionParser.scala:19:38 
+[error] 19 |  def value: Parser[Value[Int]] = "[" ~> rep1sep(intLiteral, ",") <~ "]" ^^ { values =>
+[error]    |                                  ^^^^^^
+[error]    |                                  value ~> is not a member of String
+[error] -- [E006] Not Found Error: C:\Users\79258\IdeaProjects\Comp-API-log-component\src\main\scala\Parsing\FunctionExpressionParser.scala:19:41 
+[error] 19 |  def value: Parser[Value[Int]] = "[" ~> rep1sep(intLiteral, ",") <~ "]" ^^ { values =>
+[error]    |                                         ^^^^^^^
+[error]    |                                         Not found: rep1sep
+[error]    |
+[error]    | longer explanation available when compiling with `-explain`
+[error] -- [E006] Not Found Error: C:\Users\79258\IdeaProjects\Comp-API-log-component\src\main\scala\Parsing\FunctionExpressionParser.scala:27:18 
+[error] 27 |  def intLiteral: Parser[Int] = """\d+""".r ^^ { _.toInt }
+[error]    |                  ^^^^^^
+[error]    |                  Not found: type Parser
+[error]    |
+[error]    | longer explanation available when compiling with `-explain`
+[error] -- [E006] Not Found Error: C:\Users\79258\IdeaProjects\Comp-API-log-component\src\main\scala\Parsing\FunctionExpressionParser.scala:23:16 
+[error] 23 |  def function: Parser[(Int, Int) => Int] = "(" ~> ident ~ ("->" ~> intExpr) <~ ")" ^^ {
+[error]    |                ^^^^^^
+[error]    |                Not found: type Parser
+[error]    |
+[error]    | longer explanation available when compiling with `-explain`
+[error] -- [E008] Not Found Error: C:\Users\79258\IdeaProjects\Comp-API-log-component\src\main\scala\Parsing\FunctionExpressionParser.scala:23:48 
+[error] 23 |  def function: Parser[(Int, Int) => Int] = "(" ~> ident ~ ("->" ~> intExpr) <~ ")" ^^ {
+[error]    |                                            ^^^^^^
+[error]    |                                      value ~> is not a member of String
+[error] -- [E006] Not Found Error: C:\Users\79258\IdeaProjects\Comp-API-log-component\src\main\scala\Parsing\FunctionExpressionParser.scala:23:51 
+[error] 23 |  def function: Parser[(Int, Int) => Int] = "(" ~> ident ~ ("->" ~> intExpr) <~ ")" ^^ {
+[error]    |                                                   ^^^^^
+[error]    |                               Not found: ident - did you mean identity?
+[error]    |
+[error]    | longer explanation available when compiling with `-explain`
+[error] -- [E008] Not Found Error: C:\Users\79258\IdeaProjects\Comp-API-log-component\src\main\scala\Parsing\FunctionExpressionParser.scala:27:44 
+[error] 27 |  def intLiteral: Parser[Int] = """\d+""".r ^^ { _.toInt }
+[error]    |                                ^^^^^^^^^^^^^^
+[error]    |                   value ^^ is not a member of scala.util.matching.Regex
+[error] -- [E006] Not Found Error: C:\Users\79258\IdeaProjects\Comp-API-log-component\src\main\scala\Parsing\FunctionExpressionParser.scala:29:15 
+[error] 29 |  def intExpr: Parser[Int] = intLiteral | (ident ^^ { case name => 0 }) // Заглушка для идентификаторов
+[error]    |               ^^^^^^
+[error]    |               Not found: type Parser
+[error]    |
+[error]    | longer explanation available when compiling with `-explain`
+[error] -- [E006] Not Found Error: C:\Users\79258\IdeaProjects\Comp-API-log-component\src\main\scala\Parsing\FunctionExpressionParser.scala:37:4 
+[error] 37 |    parseAll(expression, input) match {
+[error]    |    ^^^^^^^^
+[error]    |    Not found: parseAll - did you mean parse?
+[error]    |
+[error]    | longer explanation available when compiling with `-explain`
+[error] -- [E107] Syntax Error: C:\Users\79258\IdeaProjects\Comp-API-log-component\src\main\scala\Parsing\FunctionExpressionParser.scala:38:18 
+[error] 38 |      case Success(result, _) => result
+[error]    |           ^^^^^^^^^^^^^^^^^^
+[error]    |Wrong number of argument patterns for scala.util.Success; expected: (Nothing)
+[error]    |
+[error]    | longer explanation available when compiling with `-explain`
+[error] -- [E006] Not Found Error: C:\Users\79258\IdeaProjects\Comp-API-log-component\src\main\scala\Parsing\FunctionExpressionParser.scala:38:33 
+[error] 38 |      case Success(result, _) => result
+[error]    |                                 ^^^^^^
+[error]    |                                Not found: result - did you mean reduce?
+[error]    |
+[error]    | longer explanation available when compiling with `-explain`
+[error] -- [E107] Syntax Error: C:\Users\79258\IdeaProjects\Comp-API-log-component\src\main\scala\Parsing\FunctionExpressionParser.scala:39:18 
+[error] 39 |      case Failure(msg, _) => throw new RuntimeException(s"Parsing failed: $msg")
+[error]    |           ^^^^^^^^^^^^^^^
+[error]    |Wrong number of argument patterns for scala.util.Failure; expected: (Throwable)
+[error]    |
+[error]    | longer explanation available when compiling with `-explain`
+[error] -- [E006] Not Found Error: C:\Users\79258\IdeaProjects\Comp-API-log-component\src\main\scala\Parsing\FunctionExpressionParser.scala:39:76 
+[error] 39 |      case Failure(msg, _) => throw new RuntimeException(s"Parsing failed: $msg")
+[error]    |                                                                            ^^^
+[error]    |                                                          Not found: msg
+[error]    |
+[error]    | longer explanation available when compiling with `-explain`
+[error] -- [E127] Pattern Match Error: C:\Users\79258\IdeaProjects\Comp-API-log-component\src\main\scala\Parsing\FunctionExpressionParser.scala:40:11 
+[error] 40 |      case Error(msg, _) => throw new RuntimeException(s"Parsing error: $msg")
+[error]    |           ^^^^^
+[error]    |Error cannot be used as an extractor in a pattern because it lacks an unapply or unapplySeq method
+[error]    |
+[error]    | longer explanation available when compiling with `-explain`
+[error] -- [E006] Not Found Error: C:\Users\79258\IdeaProjects\Comp-API-log-component\src\main\scala\Parsing\FunctionExpressionParser.scala:40:73 
+[error] 40 |      case Error(msg, _) => throw new RuntimeException(s"Parsing error: $msg")
+[error]    |                                                                         ^^^
+[error]    |                                                          Not found: msg
+[error]    |
+[error]    | longer explanation available when compiling with `-explain`
+[error] 23 errors found
+[error] (Compile / compileIncremental) Compilation failed
+[error] Total time: 3 s, completed 26 нояб. 2024 г., 00:52:48
+[debug] > Exec(idea-shell, None, None)

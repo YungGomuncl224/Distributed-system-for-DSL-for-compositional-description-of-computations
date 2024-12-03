@@ -1,0 +1,5 @@
+[debug] > Exec(-explain-cyclic, None, None)
+[error] Expected 'error'
+[error] -explain-cyclic
+[error]   ^
+[debug] > Exec(idea-shell, None, None)

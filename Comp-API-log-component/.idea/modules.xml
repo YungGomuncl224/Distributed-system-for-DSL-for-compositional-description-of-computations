@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Comp-API-log-component.iml" filepath="$PROJECT_DIR$/.idea/modules/Comp-API-log-component.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Comp-API-log-component.Comp-API-log-component-build.iml" filepath="$PROJECT_DIR$/.idea/modules/Comp-API-log-component.Comp-API-log-component-build.iml" />
+    </modules>
+  </component>
+</project>

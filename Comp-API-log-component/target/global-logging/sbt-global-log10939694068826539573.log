@@ -1,0 +1,116 @@
+[debug] > Exec(run, None, None)
+[debug] Evaluating tasks: Compile / run
+[debug] Running task... Cancel: Signal, check cycles: false, forcegc: true
+[info] downloading https://repo1.maven.org/maven2/com/lihaoyi/fastparse_3/3.1.0/fastparse_3-3.1.0.pom
+[info] downloaded https://repo1.maven.org/maven2/com/lihaoyi/fastparse_3/3.1.0/fastparse_3-3.1.0.pom
+[info] downloading https://repo1.maven.org/maven2/com/lihaoyi/geny_3/1.1.0/geny_3-1.1.0.pom
+[info] downloading https://repo1.maven.org/maven2/com/lihaoyi/sourcecode_3/0.4.0/sourcecode_3-0.4.0.pom
+[info] downloaded https://repo1.maven.org/maven2/com/lihaoyi/geny_3/1.1.0/geny_3-1.1.0.pom
+[info] downloaded https://repo1.maven.org/maven2/com/lihaoyi/sourcecode_3/0.4.0/sourcecode_3-0.4.0.pom
+[info] downloading https://repo1.maven.org/maven2/com/lihaoyi/sourcecode_3/0.4.0/sourcecode_3-0.4.0.jar
+[info] downloading https://repo1.maven.org/maven2/com/lihaoyi/geny_3/1.1.0/geny_3-1.1.0.jar
+[info] downloading https://repo1.maven.org/maven2/com/lihaoyi/fastparse_3/3.1.0/fastparse_3-3.1.0.jar
+[info] downloaded https://repo1.maven.org/maven2/com/lihaoyi/sourcecode_3/0.4.0/sourcecode_3-0.4.0.jar
+[info] downloaded https://repo1.maven.org/maven2/com/lihaoyi/geny_3/1.1.0/geny_3-1.1.0.jar
+[info] downloaded https://repo1.maven.org/maven2/com/lihaoyi/fastparse_3/3.1.0/fastparse_3-3.1.0.jar
+[info] compiling 5 Scala sources to C:\Users\79258\IdeaProjects\Comp-API-log-component\target\scala-3.3.4\classes ...
+[error] -- [E040] Syntax Error: C:\Users\79258\IdeaProjects\Comp-API-log-component\src\main\scala\Parsing\ExpressionParser.scala:11:17 
+[error] 11 |  def expression[_: P]: P[Expression[Int]] = P(term ~ (("+" | "-") ~ term).rep).map {
+[error]    |                 ^
+[error]    |                 an identifier expected, but '_' found
+[error]    |
+[error]    | longer explanation available when compiling with `-explain`
+[error] -- [E040] Syntax Error: C:\Users\79258\IdeaProjects\Comp-API-log-component\src\main\scala\Parsing\ExpressionParser.scala:19:11 
+[error] 19 |  def term[_: P]: P[Expression[Int]] = P(factor ~ (("*" | "/") ~ factor).rep).map {
+[error]    |           ^
+[error]    |           an identifier expected, but '_' found
+[error]    |
+[error]    | longer explanation available when compiling with `-explain`
+[error] -- [E040] Syntax Error: C:\Users\79258\IdeaProjects\Comp-API-log-component\src\main\scala\Parsing\ExpressionParser.scala:27:13 
+[error] 27 |  def factor[_: P]: P[Expression[Int]] = P(number | "(" ~ expression ~ ")")
+[error]    |             ^
+[error]    |             an identifier expected, but '_' found
+[error]    |
+[error]    | longer explanation available when compiling with `-explain`
+[error] -- [E040] Syntax Error: C:\Users\79258\IdeaProjects\Comp-API-log-component\src\main\scala\Parsing\ExpressionParser.scala:29:13 
+[error] 29 |  def number[_: P]: P[Expression[Int]] = P(CharIn("0-9").rep(1).!.map(num => Expression.value(num.toInt)))
+[error]    |             ^
+[error]    |             an identifier expected, but '_' found
+[error]    |
+[error]    | longer explanation available when compiling with `-explain`
+[error] -- [E008] Not Found Error: C:\Users\79258\IdeaProjects\Comp-API-log-component\src\main\scala\Parsing\ExpressionParser.scala:11:60 
+[error] 11 |  def expression[_: P]: P[Expression[Int]] = P(term ~ (("+" | "-") ~ term).rep).map {
+[error]    |                                                        ^^^^^
+[error]    |value | is not a member of String.
+[error]    |An extension method was tried, but could not be fully constructed:
+[error]    |
+[error]    |    fastparse.|[T]("+")
+[error]    |
+[error]    |    failed with:
+[error]    |
+[error]    |        Found:    ("+" : String)
+[error]    |        Required: fastparse.ParsingRun[Any]
+[error]    |        
+[error]    |        The following import might make progress towards fixing the problem:
+[error]    |        
+[error]    |          import sourcecode.Text.generate
+[error]    |        
+[error]    |        
+[error] -- [E172] Type Error: C:\Users\79258\IdeaProjects\Comp-API-log-component\src\main\scala\Parsing\ExpressionParser.scala:11:78 
+[error] 11 |  def expression[_: P]: P[Expression[Int]] = P(term ~ (("+" | "-") ~ term).rep).map {
+[error]    |                                                                              ^
+[error]    |No given instance of type fastparse.ParsingRun[?] was found for parameter ctx of method ~ in package fastparse
+[error] -- [E008] Not Found Error: C:\Users\79258\IdeaProjects\Comp-API-log-component\src\main\scala\Parsing\ExpressionParser.scala:19:56 
+[error] 19 |  def term[_: P]: P[Expression[Int]] = P(factor ~ (("*" | "/") ~ factor).rep).map {
+[error]    |                                                    ^^^^^
+[error]    |value | is not a member of String.
+[error]    |An extension method was tried, but could not be fully constructed:
+[error]    |
+[error]    |    fastparse.|[T]("*")
+[error]    |
+[error]    |    failed with:
+[error]    |
+[error]    |        Found:    ("*" : String)
+[error]    |        Required: fastparse.ParsingRun[Any]
+[error]    |        
+[error]    |        The following import might make progress towards fixing the problem:
+[error]    |        
+[error]    |          import sourcecode.Text.generate
+[error]    |        
+[error]    |        
+[error] -- [E172] Type Error: C:\Users\79258\IdeaProjects\Comp-API-log-component\src\main\scala\Parsing\ExpressionParser.scala:19:76 
+[error] 19 |  def term[_: P]: P[Expression[Int]] = P(factor ~ (("*" | "/") ~ factor).rep).map {
+[error]    |                                                                            ^
+[error]    |No given instance of type fastparse.ParsingRun[?] was found for parameter ctx of method ~ in package fastparse
+[error] -- [E008] Not Found Error: C:\Users\79258\IdeaProjects\Comp-API-log-component\src\main\scala\Parsing\ExpressionParser.scala:27:56 
+[error] 27 |  def factor[_: P]: P[Expression[Int]] = P(number | "(" ~ expression ~ ")")
+[error]    |                                                    ^^^^^
+[error]    |value ~ is not a member of String.
+[error]    |An extension method was tried, but could not be fully constructed:
+[error]    |
+[error]    |    fastparse.~[T]("(")
+[error]    |
+[error]    |    failed with:
+[error]    |
+[error]    |        Found:    ("(" : String)
+[error]    |        Required: fastparse.ParsingRun[Any]
+[error]    |        
+[error]    |        The following import might make progress towards fixing the problem:
+[error]    |        
+[error]    |          import sourcecode.Text.generate
+[error]    |        
+[error]    |        
+[error] -- [E172] Type Error: C:\Users\79258\IdeaProjects\Comp-API-log-component\src\main\scala\Parsing\ExpressionParser.scala:29:56 
+[error] 29 |  def number[_: P]: P[Expression[Int]] = P(CharIn("0-9").rep(1).!.map(num => Expression.value(num.toInt)))
+[error]    |                                                        ^
+[error]    |No given instance of type fastparse.ParsingRun[?] was found for parameter ctx of method CharIn in package fastparse
+[error] -- [E050] Type Error: C:\Users\79258\IdeaProjects\Comp-API-log-component\src\main\scala\Parsing\ExpressionParser.scala:33:17 
+[error] 33 |    parse(input, expression(_)) match {
+[error]    |                 ^^^^^^^^^^
+[error]    |   method expression in object ExpressionParser does not take parameters
+[error]    |
+[error]    | longer explanation available when compiling with `-explain`
+[error] 11 errors found
+[error] (Compile / compileIncremental) Compilation failed
+[error] Total time: 12 s, completed 22 нояб. 2024 г., 16:12:53
+[debug] > Exec(idea-shell, None, None)
