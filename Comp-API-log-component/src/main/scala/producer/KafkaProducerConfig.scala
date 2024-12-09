@@ -17,7 +17,7 @@ class KafkaProducerConfig {
   }
 
   def send(message: String): Unit = {
-    val record = new ProducerRecord[String, String]("rs_topic", message)
+    val record = new ProducerRecord[String, String]("rs_topic1", message)
     producer.send(record)
   }
 
