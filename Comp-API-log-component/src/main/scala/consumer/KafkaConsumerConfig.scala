@@ -8,6 +8,7 @@ import java.util.Properties
 import java.util.ArrayList
 import scala.collection.JavaConverters.*
 
+val n = 5.toBinaryString
 class KafkaConsumerConfig {
   
   private val consumer : KafkaConsumer[String,String] = createConsumer()

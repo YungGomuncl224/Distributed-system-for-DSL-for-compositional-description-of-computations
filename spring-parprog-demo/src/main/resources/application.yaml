@@ -18,9 +18,11 @@ spring:
       context-path: /admin
 
 
+
 management:
   endpoints:
     web:
       exposure:
+        include=health,info,metrics:
         include: "*"
 
