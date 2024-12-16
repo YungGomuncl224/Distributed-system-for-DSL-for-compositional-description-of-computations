@@ -50,19 +50,18 @@ case class Value[A](value: List[A]) extends Expression[A] {
   def eval: Eval[List[A]] = Eval.later{
     println(value)
     value
-  } // Непосредственное значение
+  }
 }
 
 case class MapExpr[A, B](exp: Expression[A], f: A => B) extends Expression[B] {
   def eval: Eval[List[B]] = {
-    // Получаем значения из выражения
+
     val originalList = exp.eval.value
-    // Создаем список Future для обработки каждого элемента
+
     val futures: Seq[Future[B]] = originalList.map(value => Future(f(value)))
 
-    // Оборачиваем результаты в Eval
+
     Eval.later {
-      // Ждем завершения всех Future и собираем результаты
       val results: Future[List[B]] = Future.sequence(futures).map(_.toList)
       Await.result(results,1.second)
     }
@@ -86,7 +85,6 @@ case class FoldExpr[A](exp : Expression[A],f : (A,A) => A,zero : A) extends Expr
         Await.result(resultFuture, 1.second)
       }
     } else {
-      // Последовательная редукция
       Eval.later {
         List(originalList.fold(zero)(f))
       }
@@ -104,7 +102,6 @@ case class FlatMapExpr[A, B](exp: Expression[A], f: A => Expression[B]) extends 
     }
     Eval.later {
       val results: Future[List[List[B]]] = Future.sequence(futures).map(_.toList)
-      // Flatten the list of lists after waiting for all futures to complete
       Await.result(results, 1.second).flatten
     }
   }
@@ -144,21 +141,21 @@ case class ReduceExpr[A](exp: Expression[A], f: (A, A) => A) extends Expression[
 
 case class ThenExpr[A, B](first: Expression[A], second: Expression[B]) extends Expression[B] {
   def eval: Eval[List[B]] = for {
-    _ <- first.eval // Выполняем первое выражение
-    result <- second.eval // Затем выполняем второе выражение
+    _ <- first.eval 
+    result <- second.eval
   } yield result
 }
 
 case class FilterExpr[A](exp: Expression[A], predicate: A => Boolean) extends Expression[A] {
   def eval: Eval[List[A]] = for {
     expression <- exp.eval
-  } yield expression.filter(predicate) // Фильтруем элементы по предикату
+  } yield expression.filter(predicate) 
 }
 
 case class ProjectExpr[A, B](exp: Expression[A], f: A => B) extends Expression[B] {
   def eval: Eval[List[B]] = for {
     expression <- exp.eval
-  } yield expression.map(f) // Применяем функцию к каждому элементу списка
+  } yield expression.map(f) 
 }
 
 case class JoinValues[A, B, C](left: Expression[A], right: Expression[B], joinFunc: (A, B) => C) extends Expression[C] {
@@ -193,38 +190,38 @@ case class EveryExpr[A](exp: Expression[A], functions: List[(A, A) => A]) extend
 
 case class IfExpr[A](condition: Expression[Boolean], thenExpr: Expression[A], elseExpr: Expression[A]) extends Expression[A] {
   def eval: Eval[List[A]] = for {
-    cond <- condition.eval // Оцениваем условие
-    result <- if (cond.head) thenExpr.eval else elseExpr.eval // Выбираем выражение в зависимости от условия
+    cond <- condition.eval 
+    result <- if (cond.head) thenExpr.eval else elseExpr.eval 
   } yield result
 }
 
 
-object ASTExample {
-  def main(args: Array[String]): Unit = {
-    // Создаем AST для выражения: Expression.value(1, 2, 3).map(x => x * x).reduce(_ + _)
-//    val expression: Expression[Int] = Expression.value(1, 2, 3)
-//      .map(x => x * x) // Применяем функцию x => x * x
-//      .reduce(_ + _) // Суммируем результаты с использованием reduce
-//    // Выполняем вычисление
-//    println("пока только создали")
-//    Thread.sleep(500)
-//    val result: List[Int] = expression.eval.value // Извлекаем значение из Eval
-//    println(s"Результат вычисления: ${result.headOption.getOrElse(0)}") // Ожидаемый результат: 14 (1*1 + 2*2 + 3*3)
-//    val expression1: Expression[Int] = Expression.value(1, 2, 3)
-//      .flatmap(x => Expression.value(x, x * 2)) // Применяем flatMap, чтобы создать новые значения
+//object ASTExample {
+//  def main(args: Array[String]): Unit = {
+//    // Создаем AST для выражения: Expression.value(1, 2, 3).map(x => x * x).reduce(_ + _)
+////    val expression: Expression[Int] = Expression.value(1, 2, 3)
+////      .map(x => x * x) // Применяем функцию x => x * x
+////      .reduce(_ + _) // Суммируем результаты с использованием reduce
+////    // Выполняем вычисление
+////    println("пока только создали")
+////    Thread.sleep(500)
+////    val result: List[Int] = expression.eval.value // Извлекаем значение из Eval
+////    println(s"Результат вычисления: ${result.headOption.getOrElse(0)}") // Ожидаемый результат: 14 (1*1 + 2*2 + 3*3)
+////    val expression1: Expression[Int] = Expression.value(1, 2, 3)
+////      .flatmap(x => Expression.value(x, x * 2)) // Применяем flatMap, чтобы создать новые значения
+////
+////    // Выполняем вычисление
+////    println("пока только создали")
+////    Thread.sleep(500)
+////    val result1: List[Int] = expression1.eval.value // Извлекаем значение из Eval
+////    println(s"Результат вычисления: ${result1.mkString(", ")}") // Ожидаемый результат: 1, 2, 2, 4, 3, 6
+//
+//    val expression2: Expression[Int] = Expression.value(1,2,3,4).fold(0)((x,y) => x+y)// Суммируем все элементы
 //
 //    // Выполняем вычисление
-//    println("пока только создали")
-//    Thread.sleep(500)
-//    val result1: List[Int] = expression1.eval.value // Извлекаем значение из Eval
-//    println(s"Результат вычисления: ${result1.mkString(", ")}") // Ожидаемый результат: 1, 2, 2, 4, 3, 6
-
-    val expression2: Expression[Int] = Expression.value(1,2,3,4).fold(0)((x,y) => x+y)// Суммируем все элементы
-
-    // Выполняем вычисление
-    println("Ожидание вычисления")
-    val result2: List[Int] = expression2.eval.value // Получаем Eval[Int]
-    println(s"Результат редукции: ${result2.mkString(",")}")
-  }
-}
+//    println("Ожидание вычисления")
+//    val result2: List[Int] = expression2.eval.value // Получаем Eval[Int]
+//    println(s"Результат редукции: ${result2.mkString(",")}")
+//  }
+//}
 

@@ -1,0 +1,95 @@
+[debug] Separate classpath projects and all dependencies start:
+[debug] Separate classpath projects and all dependencies end. Took 32 ms
+[debug] Collect only external dependencies start:
+[debug] Collect only external dependencies end. Took 0 ms
+[debug] Collect excluded jar names start:
+[debug] Collect excluded jar names end. Took 1 ms
+[debug] Filter jars start:
+[debug] Filter jars end. Took 1 ms
+[debug] Collect and shade project classes start:
+[debug] Collect and shade project classes end. Took 11 ms
+[debug] Collect and shade dependency entries start:
+[debug] Collect and shade dependency entries end. Took 23 ms
+[debug] Collect renames start:
+[debug] Collect renames end. Took 157 ms
+[debug] Process renames start:
+[debug] Process renames end. Took 26 ms
+[debug] Collect all merge strategies for cache check start:
+[debug] Collect all merge strategies for cache check end. Took 100 ms
+[debug] Building assembly jar due to missing output...
+[debug] Merge all conflicting jar entries (including those renamed) start:
+[debug] Merge all conflicting jar entries (including those renamed) end. Took 834 ms
+[debug] Report merge results start:
+[info] 6 file(s) merged using strategy 'Rename' (Run the task at debug level to see the details)
+[debug] 
+[debug] Merge Strategy Used: Rename
+[debug] Resulting entries:
+[debug]   Jar entry = LICENSE_kafka-clients-3.8.0
+[debug]   Jar entry = LICENSE_scala-library-2.13.14
+[debug] Merge origins:
+[debug]   Jar name = kafka-clients-3.8.0.jar, jar org = org.apache.kafka, entry target = LICENSE
+[debug]   Jar name = scala-library-2.13.14.jar, jar org = org.scala-lang, entry target = LICENSE
+[debug] 
+[debug] Merge Strategy Used: Rename
+[debug] Resulting entries:
+[debug]   Jar entry = common/message/README_kafka-clients-3.8.0.md
+[debug] Merge origins:
+[debug]   Jar name = kafka-clients-3.8.0.jar, jar org = org.apache.kafka, entry target = common/message/README.md
+[debug] 
+[debug] Merge Strategy Used: Rename
+[debug] Resulting entries:
+[debug]   Jar entry = org/xerial/snappy/native/README_snappy-java-1.1.10.5
+[debug] Merge origins:
+[debug]   Jar name = snappy-java-1.1.10.5.jar, jar org = org.xerial.snappy, entry target = org/xerial/snappy/native/README
+[debug] 
+[debug] Merge Strategy Used: Rename
+[debug] Resulting entries:
+[debug]   Jar entry = NOTICE_kafka-clients-3.8.0
+[debug]   Jar entry = NOTICE_scala-library-2.13.14
+[debug] Merge origins:
+[debug]   Jar name = kafka-clients-3.8.0.jar, jar org = org.apache.kafka, entry target = NOTICE
+[debug]   Jar name = scala-library-2.13.14.jar, jar org = org.scala-lang, entry target = NOTICE
+[info] 15 file(s) merged using strategy 'Discard' (Run the task at debug level to see the details)
+[debug] 
+[debug] Merge Strategy Used: Discard
+[debug] Resulting entries:
+[debug]   None
+[debug] Merge origins:
+[debug]   Jar name = slf4j-api-1.7.36.jar, jar org = org.slf4j, entry target = META-INF/maven/org.slf4j/slf4j-api/pom.properties
+[debug] 
+[debug] Merge Strategy Used: Discard
+[debug] Resulting entries:
+[debug]   None
+[debug] Merge origins:
+[debug]   Jar name = zstd-jni-1.5.6-3.jar, jar org = com.github.luben, entry target = META-INF/MANIFEST.MF
+[debug]   Jar name = fastparse_3-3.1.0.jar, jar org = com.lihaoyi, entry target = META-INF/MANIFEST.MF
+[debug]   Jar name = geny_3-1.1.0.jar, jar org = com.lihaoyi, entry target = META-INF/MANIFEST.MF
+[debug]   Jar name = sourcecode_3-0.4.0.jar, jar org = com.lihaoyi, entry target = META-INF/MANIFEST.MF
+[debug]   Jar name = kafka-clients-3.8.0.jar, jar org = org.apache.kafka, entry target = META-INF/MANIFEST.MF
+[debug]   Jar name = lz4-java-1.8.0.jar, jar org = org.lz4, entry target = META-INF/MANIFEST.MF
+[debug]   Jar name = scala-parser-combinators_3-2.4.0.jar, jar org = org.scala-lang.modules, entry target = META-INF/MANIFEST.MF
+[debug]   Jar name = scala-library-2.13.14.jar, jar org = org.scala-lang, entry target = META-INF/MANIFEST.MF
+[debug]   Jar name = scala3-library_3-3.3.4.jar, jar org = org.scala-lang, entry target = META-INF/MANIFEST.MF
+[debug]   Jar name = slf4j-api-1.7.36.jar, jar org = org.slf4j, entry target = META-INF/MANIFEST.MF
+[debug]   Jar name = cats-core_3-2.12.0.jar, jar org = org.typelevel, entry target = META-INF/MANIFEST.MF
+[debug]   Jar name = cats-kernel_3-2.12.0.jar, jar org = org.typelevel, entry target = META-INF/MANIFEST.MF
+[debug]   Jar name = snappy-java-1.1.10.5.jar, jar org = org.xerial.snappy, entry target = META-INF/MANIFEST.MF
+[debug] 
+[debug] Merge Strategy Used: Discard
+[debug] Resulting entries:
+[debug]   None
+[debug] Merge origins:
+[debug]   Jar name = slf4j-api-1.7.36.jar, jar org = org.slf4j, entry target = META-INF/maven/org.slf4j/slf4j-api/pom.xml
+[debug] Report merge results end. Took 9 ms
+[debug] Finding remaining conflicts that were not merged start:
+[debug] Finding remaining conflicts that were not merged end. Took 141 ms
+[debug] Sort/Parallelize merged entries start:
+[debug] Sort/Parallelize merged entries end. Took 26 ms
+[debug] Create jar start:
+[debug] Create jar end. Took 3628 ms
+[debug] Hash newly-built Jar start:
+[debug] Hash newly-built Jar end. Took 42 ms
+[info] Built: C:\Users\79258\IdeaProjects\Comp-API-log-component\target\scala-3.3.4\Comp-API-log-component-assembly-0.1.0-SNAPSHOT.jar
+[info] Jar hash: 8cd364b69f61114949c459d3c4872694e51c1c05
+[debug] Close library jar references start:
+[debug] Close library jar references end. Took 1 ms

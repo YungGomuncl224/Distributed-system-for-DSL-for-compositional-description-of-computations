@@ -1,0 +1,45 @@
+[debug] > Exec(run, None, None)
+[debug] Evaluating tasks: Compile / run
+[debug] Running task... Cancel: Signal, check cycles: false, forcegc: true
+[info] compiling 10 Scala sources to C:\Users\79258\IdeaProjects\Comp-API-log-component\target\scala-3.3.4\classes ...
+[warn] -- [E092] Pattern Match Unchecked Warning: C:\Users\79258\IdeaProjects\Comp-API-log-component\src\main\scala\AST\Eval.scala:76:11 
+[warn] 76 |      case c: Eval.FlatMap[A] =>
+[warn]    |           ^
+[warn]    |the type test for AST.Eval.FlatMap[A] cannot be checked at runtime because its type arguments can't be determined from AST.Eval[A] & AST.Eval[A]
+[warn]    |
+[warn]    | longer explanation available when compiling with `-explain`
+[warn] -- [E092] Pattern Match Unchecked Warning: C:\Users\79258\IdeaProjects\Comp-API-log-component\src\main\scala\AST\Eval.scala:90:11 
+[warn] 90 |      case c: Eval.Defer[A] =>
+[warn]    |           ^
+[warn]    |the type test for AST.Eval.Defer[A] cannot be checked at runtime because its type arguments can't be determined from AST.Eval[A] & AST.Eval[A]
+[warn]    |
+[warn]    | longer explanation available when compiling with `-explain`
+[warn] -- [E092] Pattern Match Unchecked Warning: C:\Users\79258\IdeaProjects\Comp-API-log-component\src\main\scala\AST\Eval.scala:319:13 
+[warn] 319 |        case c: FlatMap[A1] =>
+[warn]     |             ^
+[warn]     |the type test for AST.Eval.FlatMap[A1] cannot be checked at runtime because its type arguments can't be determined from AST.Eval[A1]
+[warn]     |
+[warn]     | longer explanation available when compiling with `-explain`
+[warn] -- [E092] Pattern Match Unchecked Warning: C:\Users\79258\IdeaProjects\Comp-API-log-component\src\main\scala\AST\Eval.scala:321:17 
+[warn] 321 |            case cc: FlatMap[c.Start] =>
+[warn]     |                 ^
+[warn]     |the type test for AST.Eval.FlatMap[c.Start] cannot be checked at runtime because its type arguments can't be determined from AST.Eval[c.Start]
+[warn]     |
+[warn]     | longer explanation available when compiling with `-explain`
+[warn] -- [E092] Pattern Match Unchecked Warning: C:\Users\79258\IdeaProjects\Comp-API-log-component\src\main\scala\AST\Eval.scala:324:17 
+[warn] 324 |            case call: Defer[c.Start] =>
+[warn]     |                 ^
+[warn]     |the type test for AST.Eval.Defer[c.Start] cannot be checked at runtime because its type arguments can't be determined from AST.Eval[c.Start]
+[warn]     |
+[warn]     | longer explanation available when compiling with `-explain`
+[warn] -- [E092] Pattern Match Unchecked Warning: C:\Users\79258\IdeaProjects\Comp-API-log-component\src\main\scala\AST\Eval.scala:343:13 
+[warn] 343 |        case call: Defer[A1] =>
+[warn]     |             ^
+[warn]     |the type test for AST.Eval.Defer[A1] cannot be checked at runtime because its type arguments can't be determined from AST.Eval[A1]
+[warn]     |
+[warn]     | longer explanation available when compiling with `-explain`
+[warn] there was 1 deprecation warning; re-run with -deprecation for details
+[warn] 7 warnings found
+[info] done compiling
+[success] Total time: 13 s, completed 16 дек. 2024 г., 17:23:46
+[debug] > Exec(idea-shell, None, None)

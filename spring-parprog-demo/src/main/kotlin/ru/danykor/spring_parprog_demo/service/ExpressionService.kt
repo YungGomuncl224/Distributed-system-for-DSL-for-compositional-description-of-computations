@@ -22,10 +22,10 @@ class MessageService(
         val latch = CountDownLatch(1)
         latchMap[correlationId] = latch
 
-        kafkaTemplate.send("TestTopic", fullMessage)
+        kafkaTemplate.send("10_req_topic", fullMessage)
 
         return try {
-            if (latch.await(10, TimeUnit.SECONDS)) {
+            if (latch.await(100, TimeUnit.SECONDS)) {
                 responseMap[correlationId]
             } else {
                 null // Timeout

@@ -1,0 +1,7 @@
+[debug] > Exec(package, None, None)
+[debug] Evaluating tasks: Compile / package
+[debug] Running task... Cancel: Signal, check cycles: false, forcegc: true
+[info] compiling 3 Scala sources to C:\Users\79258\IdeaProjects\Comp-API-log-component\target\scala-3.3.4\classes ...
+[info] done compiling
+[success] Total time: 4 s, completed 13 дек. 2024 г., 00:27:36
+[debug] > Exec(idea-shell, None, None)

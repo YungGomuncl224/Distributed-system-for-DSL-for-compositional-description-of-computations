@@ -1,9 +1,3 @@
-[warn] -- Warning: C:\Users\79258\IdeaProjects\Comp-API-log-component\src\main\scala\main.scala:1:0 
-[warn] 1 |import AST.Eval
-[warn]   |^^^^^^^^^^^^^^^
-[warn]   |No class, trait or object is defined in the compilation unit.
-[warn]   |The incremental compiler cannot record the dependency information in such case.
-[warn]   |Some errors like unused import referring to a non-existent class might not be reported.
 [warn] -- [E092] Pattern Match Unchecked Warning: C:\Users\79258\IdeaProjects\Comp-API-log-component\src\main\scala\AST\Eval.scala:76:11 
 [warn] 76 |      case c: Eval.FlatMap[A] =>
 [warn]    |           ^
@@ -40,4 +34,5 @@
 [warn]     |the type test for AST.Eval.Defer[A1] cannot be checked at runtime because its type arguments can't be determined from AST.Eval[A1]
 [warn]     |
 [warn]     | longer explanation available when compiling with `-explain`
+[warn] there was 1 deprecation warning; re-run with -deprecation for details
 [warn] 7 warnings found
