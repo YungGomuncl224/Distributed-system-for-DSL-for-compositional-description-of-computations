@@ -2,10 +2,15 @@ package AST
 import ConcurrentImpl.isAssociativeCheck
 //import ConcurrentImpl.parallelMap
 
-import scala.concurrent.{Future, Await}
-import scala.concurrent.ExecutionContext.Implicits.global
-import scala.concurrent.duration._
-import scala.util.{Success, Failure}
+import scala.concurrent.Await
+//import scala.concurrent.ExecutionContext.Implicits.global
+import java.util.concurrent.Executors
+import scala.concurrent.{ExecutionContext, Future}
+
+// Создание собственного ExecutionContext с фиксированным количеством потоков
+val threadPool = Executors.newFixedThreadPool(1)
+implicit val ec: ExecutionContext = ExecutionContext.fromExecutor(threadPool)
+import scala.concurrent.duration.*
 
 sealed trait Expression[A] {
 
@@ -48,7 +53,7 @@ object Expression {
 
 case class Value[A](value: List[A]) extends Expression[A] {
   def eval: Eval[List[A]] = Eval.later{
-    println(value)
+    //println(value)
     value
   }
 }
@@ -119,6 +124,7 @@ case class ZipExpr[A, B](exp1: Expression[A], exp2: Expression[B]) extends Expre
 
 case class ReduceExpr[A](exp: Expression[A], f: (A, A) => A) extends Expression[A] {
   def eval: Eval[List[A]] = {
+    //Thread.sleep(10)
     val originalList = exp.eval.value
     val isAssociative : Boolean= {isAssociativeCheck(originalList,f)}
     if (isAssociative) {
@@ -196,32 +202,17 @@ case class IfExpr[A](condition: Expression[Boolean], thenExpr: Expression[A], el
 }
 
 
-//object ASTExample {
-//  def main(args: Array[String]): Unit = {
-//    // Создаем AST для выражения: Expression.value(1, 2, 3).map(x => x * x).reduce(_ + _)
-////    val expression: Expression[Int] = Expression.value(1, 2, 3)
-////      .map(x => x * x) // Применяем функцию x => x * x
-////      .reduce(_ + _) // Суммируем результаты с использованием reduce
-////    // Выполняем вычисление
-////    println("пока только создали")
-////    Thread.sleep(500)
-////    val result: List[Int] = expression.eval.value // Извлекаем значение из Eval
-////    println(s"Результат вычисления: ${result.headOption.getOrElse(0)}") // Ожидаемый результат: 14 (1*1 + 2*2 + 3*3)
-////    val expression1: Expression[Int] = Expression.value(1, 2, 3)
-////      .flatmap(x => Expression.value(x, x * 2)) // Применяем flatMap, чтобы создать новые значения
-////
-////    // Выполняем вычисление
-////    println("пока только создали")
-////    Thread.sleep(500)
-////    val result1: List[Int] = expression1.eval.value // Извлекаем значение из Eval
-////    println(s"Результат вычисления: ${result1.mkString(", ")}") // Ожидаемый результат: 1, 2, 2, 4, 3, 6
-//
-//    val expression2: Expression[Int] = Expression.value(1,2,3,4).fold(0)((x,y) => x+y)// Суммируем все элементы
-//
-//    // Выполняем вычисление
-//    println("Ожидание вычисления")
-//    val result2: List[Int] = expression2.eval.value // Получаем Eval[Int]
-//    println(s"Результат редукции: ${result2.mkString(",")}")
-//  }
-//}
+object ASTExample {
+  def main(args: Array[String]): Unit = {
+
+
+
+    val expression2 = Expression.value(1,2,3,4,5).map(x => x*x).map(x => x + 2).reduce((x,y) => x + y)
+
+    println("Ожидание вычисления")
+    val result2: List[Int] = expression2.eval.value
+    //println("ожидаем , нет обращения к значению")
+    println(s"Результат: ${result2.mkString(",")}")
+  }
+}
 

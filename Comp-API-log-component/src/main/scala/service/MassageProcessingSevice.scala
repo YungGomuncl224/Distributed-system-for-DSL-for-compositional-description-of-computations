@@ -19,29 +19,13 @@ object MassageProcessingSevice {
 
     println(s" $i")
 
-    //    val properties = new Properties()
-//    val inputStream = new FileInputStream("build.properties")
-//
-//    try {
-//      properties.load(inputStream)
-//
-//      // Получите значение порта с использованием значения по умолчанию
-//      val appPort = properties.getProperty("app.port", "8080")
-//
-//      // Выводим номер порта на экран
-//      println(s"Application port: $appPort")
-//    } catch {
-//      case e: Exception => e.printStackTrace()
-//    } finally {
-//      inputStream.close()
-//    }
-    //println(s"Starting application on port: $port")
     val consumer = new KafkaConsumerConfig()
     val producer = new KafkaProducerConfig()
 
     val topics : util.ArrayList[String] = new util.ArrayList[String]()
     topics.add("10_req_topic")
     consumer.subscribe(topics)
+    var c = 0;
 
     try {
       while (true) {
@@ -49,7 +33,9 @@ object MassageProcessingSevice {
         for (record <- records.asScala) {
           println(s"Received message: ${record.value()}")
           val processedMessage = process(record.value())
-          Thread.sleep(500)
+          //Thread.sleep(100)
+          c += 1
+          println(c)
           producer.send(processedMessage)
         }
       }

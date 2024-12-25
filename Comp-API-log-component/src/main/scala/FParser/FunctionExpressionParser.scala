@@ -65,26 +65,26 @@ object ExpressionParser extends RegexParsers {
   }
 }
 
-//object FunctionExpressionParser {
-//  def main(args: Array[String]): Unit = {
-//    val input = "map(reduce(map(map(value(1,2,3,4,5,6,7,8),square),square),sumfunc),square)"
-//    val expression = ExpressionParser.parseExpression(input)
-//
-//    // Выполняем вычисление
-//    val input1 = "map(fold(map(value(1,2,3,4,5,6,7),square),150,sumfunc),square)"
-//    val input2 = "map(fold(map(value(1,2,3),square),140,sumfunc),square)"
-//    val expression1 = ExpressionParser.parseExpression(input1)
-//    val expression2 = ExpressionParser.parseExpression(input2)
-//    
-//    val result: List[Int] = expression.eval.value // Извлекаем значение из Eval
-//    val res1 = expression1.eval.value
-//    val res2 = expression2.eval.value
-//
-//    println(s"I NEED IT even more:  $res2")
-//    println(s"I NEED IT:  $res1")
-//    println(s"Результат вычисления: ${result}") // Ожидаемый результат
-//  }
-//}
+object FunctionExpressionParser {
+  def main(args: Array[String]): Unit = {
+    val input = "map(reduce(map(map(value(1,2,3,4,5,6,7,8),square),square),sumfunc),square)"
+    val expression = ExpressionParser.parseExpression(input)
+
+    // Выполняем вычисление
+    val input1 = "map(fold(map(value(1,2,3,4,5,6,7),square),150,sumfunc),square)"
+    val input2 = "map(fold(map(value(1,2,3),square),140,sumfunc),square)"
+    val expression1 = ExpressionParser.parseExpression(input1)
+    val expression2 = ExpressionParser.parseExpression(input2)
+
+    val result: List[Int] = expression.eval.value // Извлекаем значение из Eval
+    val res1 = expression1.eval.value
+    val res2 = expression2.eval.value
+
+    println(s"I NEED IT:  $res2")
+    println(s"I NEED IT:  $res1")
+    println(s"Результат вычисления: ${result}") // Ожидаемый результат
+  }
+}
 
 
 

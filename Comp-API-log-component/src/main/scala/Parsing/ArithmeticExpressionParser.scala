@@ -21,7 +21,6 @@ object ArithmeticExpressionParser {
 
   case class RParen() extends Token
 
-  // Лексер: разбивает строку на токены
   def tokenize(input: String): List[Token] = {
     val regex = """\s*(\d+|[+*/()-])\s*""".r
     regex.findAllMatchIn(input).toList.map { m =>
@@ -37,7 +36,6 @@ object ArithmeticExpressionParser {
     }
   }
 
-  // Парсер: преобразует токены в AST
   def parse(tokens: List[Token]): Expression[Int] = {
     def parseExpression(tokens: List[Token]): (Expression[Int], List[Token]) = {
       val (term, rest) = parseTerm(tokens)
@@ -87,16 +85,16 @@ object ArithmeticExpressionParser {
     parse(tokens)
   }
 
-//  def main(args: Array[String]): Unit = {
-//    val input = "(1*2*3+3*4*100/100*100/100*100/100*100/100)*1000+10000*(500-14)/20*200/1"
-//    val in_1 = "(1)"
-//    val expression = parseExpression(input)
-//    println("до этого ничего не должно быть")
-//    val result = expression.eval.value
-//    //val ex2  = parseExpression(in_1)
-//    //val res2 = ex2.eval.value
-//    //println(s"res2 =  $res2") // 1
-//    println(s"Результат вычисления: $result") // Ожидаемый результат: 10
-//  }
+  def main(args: Array[String]): Unit = {
+    val input = "(1*2*3+3*4*100/100*100/100*100/100*100/100)*1000+10000*(500-14)/20*200/1"
+    val in_1 = "(1)"
+    val expression = parseExpression(input)
+    println("до этого ничего не должно быть")
+    val result = expression.eval.value
+    //val ex2  = parseExpression(in_1)
+    //val res2 = ex2.eval.value
+    //println(s"res2 =  $res2") // 1
+    println(s"Результат вычисления: $result") // Ожидаемый результат: 10
+  }
 }
 
